@@ -69,7 +69,12 @@
   }
 </script>
 
-<div class="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
+<div class="min-h-screen bg-gradient-to-br from-green-100 via-teal-100 to-cyan-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-20 right-10 w-40 h-40 bg-green-300 rounded-full opacity-20 blur-3xl animate-blob"></div>
+  <div class="absolute bottom-40 left-10 w-36 h-36 bg-teal-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-2000"></div>
+  <div class="absolute top-1/2 right-1/4 w-32 h-32 bg-cyan-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-4000"></div>
+  
   <!-- Navigation Bar -->
   <nav class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
     <div class="container mx-auto px-4 py-3 flex items-center gap-4">
@@ -86,13 +91,15 @@
 
   <div class="container mx-auto px-4 py-8 max-w-7xl">
     <!-- Header -->
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-8">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-3">
-        Learning from the Neighbours
-      </h1>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
-        Classification by finding the k nearest similar examples
-      </p>
+    <div class="bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 rounded-3xl shadow-2xl p-1 mb-8 transform hover:scale-[1.01] transition-transform">
+      <div class="bg-white dark:bg-gray-800 rounded-3xl p-8">
+        <h1 class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-teal-600 to-cyan-600 mb-4 animate-gradient">
+          📚 Grade Predictor Machine! 🎯
+        </h1>
+        <p class="text-xl text-gray-700 dark:text-gray-300 font-semibold">
+          Find your <span class="text-teal-600 font-bold">study buddies</span> and predict your grade using the power of AI! 🚀
+        </p>
+      </div>
     </div>
 
     <!-- Quick Guide -->

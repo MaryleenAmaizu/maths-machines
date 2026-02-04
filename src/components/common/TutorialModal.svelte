@@ -9,7 +9,7 @@
     currentStepIndex,
     tutorialSteps,
     tutorialActive
-  } from '../stores/tutorialStore'
+  } from '../../stores/tutorialStore'
   import { fade, fly, scale } from 'svelte/transition'
 
   let isDragging = false

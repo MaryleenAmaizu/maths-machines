@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tutorialActive, restartTutorial, showStepModal, currentStep, tutorialProgress, skipTutorial } from '../stores/tutorialStore'
+  import { tutorialActive, restartTutorial, showStepModal, currentStep, tutorialProgress, skipTutorial } from '../../stores/tutorialStore'
   import { fly, fade } from 'svelte/transition'
 
   let showMenu = false

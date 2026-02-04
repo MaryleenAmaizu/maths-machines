@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { userTemperature, predictedSales, activeGradient, activeYIntercept } from '../stores/dataStore'
-  import { trackInteraction } from '../stores/tutorialStore'
+  import { userTemperature, predictedSales, activeGradient, activeYIntercept } from '../../stores/dataStore'
+  import { trackInteraction } from '../../stores/tutorialStore'
   
   export let userGuess: number | null = null
   export let hasSubmitted: boolean = false

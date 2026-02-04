@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { dataPoints, userTemperature } from '../stores/dataStore'
-  import type { DataPoint } from '../stores/dataStore'
-  import { trackInteraction } from '../stores/tutorialStore'
+  import { dataPoints, userTemperature } from '../../stores/dataStore'
+  import type { DataPoint } from '../../stores/dataStore'
+  import { trackInteraction } from '../../stores/tutorialStore'
   import { onMount } from 'svelte'
 
   let editingCell: { row: number; col: string } | null = null
   let editValue = ''
   let hoveredRow: number | null = null
+  let hasInteracted = false
+  let selectedAnswer: 'increase' | 'decrease' | null = null
 
   onMount(() => {
     // Track that user viewed the data table
@@ -16,6 +18,7 @@
   function startEdit(index: number, column: string, currentValue: number) {
     editingCell = { row: index, col: column }
     editValue = currentValue.toString()
+    hasInteracted = true
     trackInteraction('DataTable', 'view')
   }
 
@@ -197,15 +200,55 @@
   </div>
   
   <div class="mt-4 space-y-2">
+    {#if !selectedAnswer}
+      <div class="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">
+          ❓ <strong>Question:</strong> Look at the data carefully. What pattern do you notice between temperature and ice cream sales?
+        </p>
+        <div class="flex gap-3 mt-3">
+          <button
+            on:click={() => selectedAnswer = 'increase'}
+            class="flex-1 py-2 px-4 bg-white dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900 border-2 border-blue-300 dark:border-blue-600 rounded-lg text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors"
+          >
+            📈 Sales <strong>increase</strong>
+          </button>
+          <button
+            on:click={() => selectedAnswer = 'decrease'}
+            class="flex-1 py-2 px-4 bg-white dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900 border-2 border-blue-300 dark:border-blue-600 rounded-lg text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors"
+          >
+            📉 Sales <strong>decrease</strong>
+          </button>
+        </div>
+      </div>
+    {:else if selectedAnswer === 'increase'}
+      <div class="p-4 bg-green-50 dark:bg-green-900/30 rounded-lg border-2 border-green-300 dark:border-green-600">
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+          ✅ <strong>Correct!</strong> As temperature increases, sales also increase.
+        </p>
+        <p class="text-xs text-gray-600 dark:text-gray-400">
+          🎯 <strong>Explanation:</strong> This is called a <em>positive relationship</em>. When one variable goes up, the other goes up too. This pattern helps us predict future sales!
+        </p>
+      </div>
+    {:else if selectedAnswer === 'decrease'}
+      <div class="p-4 bg-red-50 dark:bg-red-900/30 rounded-lg border-2 border-red-300 dark:border-red-600">
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">
+          ❌ <strong>Not quite.</strong> Look at the data again - as temperature increases, what happens to sales?
+        </p>
+        <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">
+          💡 <strong>Hint:</strong> Compare Day 1 (10°C, 45 sales) with Day 5 (20°C, 90 sales). Did sales go up or down?
+        </p>
+        <button
+          on:click={() => selectedAnswer = null}
+          class="text-xs py-1 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+        >
+          Try Again
+        </button>
+      </div>
+    {/if}
+    
     <div class="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
       <p class="text-sm text-gray-700 dark:text-gray-300">
         💡 <strong>Try it:</strong> Click any temperature or sales value to edit it and explore the data!
-      </p>
-    </div>
-    
-    <div class="p-4 bg-amber-50 dark:bg-amber-900/30 rounded-lg">
-      <p class="text-sm text-gray-700 dark:text-gray-300">
-        🎯 <strong>Notice:</strong> As temperature increases, sales also increase. This suggests a relationship between the two variables.
       </p>
     </div>
   </div>

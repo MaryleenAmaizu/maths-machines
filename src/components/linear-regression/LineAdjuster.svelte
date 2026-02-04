@@ -11,8 +11,8 @@
     activeGradient,
     activeYIntercept,
     dataPoints
-  } from '../stores/dataStore'
-  import { trackInteraction } from '../stores/tutorialStore'
+  } from '../../stores/dataStore'
+  import { trackInteraction } from '../../stores/tutorialStore'
 
   function enableManualMode() {
     // Start with the calculated values
@@ -246,6 +246,45 @@
         <p class="text-sm text-gray-700 dark:text-gray-300">
           <strong>💡 Tip:</strong> Enable "Show Errors" on the graph to see the distance from each point to your line. The goal is to minimize the total of all these squared distances!
         </p>
+      </div>
+
+      <!-- MSE Explanation -->
+      <div class="bg-blue-50 dark:bg-blue-900/30 rounded-xl p-5 border-2 border-blue-200 dark:border-blue-700">
+        <h3 class="text-lg font-bold text-blue-800 dark:text-blue-300 mb-3">
+          🧮 How is Loss (MSE) Calculated?
+        </h3>
+        <div class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+          <div>
+            <p class="font-semibold mb-2">Step-by-step example using first 3 data points:</p>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 space-y-2 font-mono text-xs">
+              {#each $dataPoints.slice(0, 3) as point, i}
+                {@const predicted = $activeGradient * point.temperature + $activeYIntercept}
+                {@const error = point.sales - predicted}
+                {@const squaredError = error * error}
+                <div class="border-b border-gray-200 dark:border-gray-700 pb-2 last:border-0">
+                  <div class="text-indigo-600 dark:text-indigo-400 font-bold mb-1">Point {i + 1}: ({point.temperature}°C, {point.sales} sales)</div>
+                  <div class="ml-2 space-y-1">
+                    <div>1️⃣ Predicted = {$activeGradient.toFixed(1)} × {point.temperature} + {$activeYIntercept.toFixed(1)} = <span class="text-blue-600 dark:text-blue-400 font-bold">{predicted.toFixed(1)}</span></div>
+                    <div>2️⃣ Error = {point.sales} - {predicted.toFixed(1)} = <span class="text-orange-600 dark:text-orange-400 font-bold">{error.toFixed(1)}</span></div>
+                    <div>3️⃣ Squared = ({error.toFixed(1)})² = <span class="text-red-600 dark:text-red-400 font-bold">{squaredError.toFixed(1)}</span></div>
+                  </div>
+                </div>
+              {/each}
+            </div>
+          </div>
+          
+          <div class="bg-amber-100 dark:bg-amber-900/50 rounded-lg p-3">
+            <p class="font-semibold text-amber-900 dark:text-amber-200 mb-2">Final Calculation:</p>
+            <div class="font-mono text-xs space-y-1">
+              <div><strong>Sum all squared errors:</strong> {$sumOfSquaredErrors.toFixed(1)}</div>
+              <div><strong>Divide by number of points:</strong> {$sumOfSquaredErrors.toFixed(1)} ÷ {$dataPoints.length} = <span class="text-green-600 dark:text-green-400 font-bold text-base">{$meanSquaredError.toFixed(2)}</span></div>
+            </div>
+          </div>
+
+          <div class="text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded p-2">
+            <strong>Why "squared"?</strong> Squaring ensures errors are always positive (no negative cancelling positive), and it punishes larger errors more heavily. A 10-unit error counts 4× worse than a 5-unit error!
+          </div>
+        </div>
       </div>
     </div>
   {/if}

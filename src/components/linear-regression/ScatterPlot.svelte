@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import * as d3 from 'd3'
-  import { dataPoints, userTemperature, showLineOfBestFit, activeGradient, activeYIntercept, predictedSales, showResiduals, manualMode, manualGradient, manualYIntercept } from '../stores/dataStore'
-  import { trackInteraction } from '../stores/tutorialStore'
+  import { dataPoints, userTemperature, showLineOfBestFit, activeGradient, activeYIntercept, predictedSales, showResiduals, manualMode, manualGradient, manualYIntercept } from '../../stores/dataStore'
+  import { trackInteraction } from '../../stores/tutorialStore'
 
   let svg: SVGSVGElement
   let width = 600

@@ -2,15 +2,25 @@
   import { navigateTo } from '../stores/routerStore'
 </script>
 
-<div class="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-  <div class="container mx-auto px-4 py-16 max-w-6xl">
+<div class="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+  <!-- Animated background decorations -->
+  <div class="absolute top-20 left-10 w-64 h-64 bg-purple-300 rounded-full opacity-20 blur-3xl animate-blob"></div>
+  <div class="absolute top-40 right-20 w-72 h-72 bg-pink-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-2000"></div>
+  <div class="absolute bottom-20 left-1/3 w-56 h-56 bg-blue-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-4000"></div>
+  <div class="absolute bottom-40 right-1/4 w-48 h-48 bg-yellow-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-6000"></div>
+  
+  <div class="container mx-auto px-4 py-16 max-w-6xl relative z-10">
     <!-- Hero Section -->
-    <div class="text-center mb-16">
-      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-        Machine Learning Explorer
+    <div class="text-center mb-16 animate-fadeIn">
+      <div class="mb-6">
+        <span class="text-7xl animate-bounce inline-block">🤖</span>
+      </div>
+      <h1 class="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 mb-6 animate-gradient">
+        Machine Learning Explorer!
       </h1>
-      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-        Learn how machines learn! Explore interactive simulations of popular machine learning algorithms.
+      <p class="text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto font-semibold leading-relaxed">
+        <span class="text-pink-600 font-black">Learn</span> how machines <span class="text-purple-600 font-black">learn</span>! ✨<br/>
+        Explore <span class="text-blue-600 font-black">super cool</span> AI simulations! 🚀
       </p>
     </div>
 
@@ -19,106 +29,96 @@
       <!-- Linear Regression Card -->
       <button
         on:click={() => navigateTo('linear-regression')}
-        class="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 text-left"
+        class="group bg-gradient-to-br from-pink-500 to-purple-600 rounded-3xl shadow-2xl p-1 hover:shadow-pink-500/50 hover:shadow-3xl transform hover:scale-105 hover:rotate-1 transition-all duration-300 text-left"
       >
-        <div class="flex items-center justify-between mb-4">
-          <div class="text-5xl">📈</div>
-          <div class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
-            Simulation 1
+        <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 h-full">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-6xl transform group-hover:scale-110 transition-transform">🍦</div>
+            <div class="px-4 py-2 bg-gradient-to-r from-pink-100 to-purple-100 dark:from-pink-900/50 dark:to-purple-900/50 text-pink-700 dark:text-pink-300 rounded-full text-sm font-bold">
+              Chapter 1
+            </div>
           </div>
-        </div>
-        
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
-          Linear Regression
-        </h2>
-        
-        <p class="text-sm text-indigo-600 dark:text-indigo-400 font-semibold mb-3">
-          Training your machine to predict
-        </p>
-        
-        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-          Predict ice cream sales based on temperature using the line of best fit.
-        </p>
-        
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs rounded">Regression</span>
-          <span class="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs rounded">Prediction</span>
-        </div>
-        
-        <div class="flex items-center text-indigo-600 dark:text-indigo-400 font-medium">
-          <span>Explore →</span>
+          
+          <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 mb-3">
+            Ice Cream Predictor!
+          </h2>
+          
+          <p class="text-base text-gray-700 dark:text-gray-300 mb-4 font-semibold">
+            🌡️ Predict sales using temperature! Draw the perfect line and become a prediction master! 🎯
+          </p>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1.5 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-xs font-bold rounded-full">Prediction</span>
+            <span class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold rounded-full">y = mx + c</span>
+          </div>
+          
+          <div class="flex items-center text-purple-600 dark:text-purple-400 font-black text-lg">
+            <span>Let's Go! →</span>
+          </div>
         </div>
       </button>
 
       <!-- KNN Card -->
       <button
         on:click={() => navigateTo('knn')}
-        class="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 text-left"
+        class="group bg-gradient-to-br from-green-500 to-teal-600 rounded-3xl shadow-2xl p-1 hover:shadow-green-500/50 hover:shadow-3xl transform hover:scale-105 hover:-rotate-1 transition-all duration-300 text-left"
       >
-        <div class="flex items-center justify-between mb-4">
-          <div class="text-5xl">🎯</div>
-          <div class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
-            Simulation 2
+        <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 h-full">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-6xl transform group-hover:scale-110 transition-transform">📚</div>
+            <div class="px-4 py-2 bg-gradient-to-r from-green-100 to-teal-100 dark:from-green-900/50 dark:to-teal-900/50 text-green-700 dark:text-green-300 rounded-full text-sm font-bold">
+              Chapter 2
+            </div>
           </div>
-        </div>
-        
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-green-600 dark:group-hover:text-green-400 transition">
-          K-Nearest Neighbors
-        </h2>
-        
-        <p class="text-sm text-green-600 dark:text-green-400 font-semibold mb-3">
-          Training your machine to classify
-        </p>
-        
-        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-          Classify students' grades by finding patterns in similar students.
-        </p>
-        
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded">Classification</span>
-          <span class="px-2 py-1 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded">Pattern</span>
-        </div>
-        
-        <div class="flex items-center text-green-600 dark:text-green-400 font-medium">
-          <span>Explore →</span>
+          
+          <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600 mb-3">
+            Grade Predictor!
+          </h2>
+          
+          <p class="text-base text-gray-700 dark:text-gray-300 mb-4 font-semibold">
+            🎯 Find study buddies and predict grades! Who are your nearest neighbors? 🤝
+          </p>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs font-bold rounded-full">Classification</span>
+            <span class="px-3 py-1.5 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold rounded-full">KNN Magic</span>
+          </div>
+          
+          <div class="flex items-center text-teal-600 dark:text-teal-400 font-black text-lg">
+            <span>Let's Go! →</span>
+          </div>
         </div>
       </button>
 
       <!-- Generative Models Card -->
       <button
         on:click={() => navigateTo('generative')}
-        class="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 text-left relative"
+        class="group bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl shadow-2xl p-1 hover:shadow-purple-500/50 hover:shadow-3xl transform hover:scale-105 hover:rotate-1 transition-all duration-300 text-left relative"
       >
-        <div class="flex items-center justify-between mb-4">
-          <div class="text-5xl">✨</div>
-          <div class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium">
-            Simulation 3
+        <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 h-full">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-6xl transform group-hover:scale-110 transition-transform">🎵</div>
+            <div class="px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/50 dark:to-pink-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm font-bold">
+              Chapter 3
+            </div>
           </div>
-        </div>
-        
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">
-          Generative Models
-        </h2>
-        
-        <p class="text-sm text-purple-600 dark:text-purple-400 font-semibold mb-3">
-          Training your machine to generate
-        </p>
-        
-        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-          Create new content by learning patterns from existing data.
-        </p>
-        
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded">Generation</span>
-          <span class="px-2 py-1 bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded">Creation</span>
-        </div>
-        
-        <div class="flex items-center text-purple-600 dark:text-purple-400 font-medium">
-          <span>Coming Soon</span>
-        </div>
-        
-        <div class="absolute top-4 right-4 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 px-2 py-1 rounded text-xs font-medium">
-          In Development
+          
+          <h2 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-3">
+            AI DJ Creator!
+          </h2>
+          
+          <p class="text-base text-gray-700 dark:text-gray-300 mb-4 font-semibold">
+            🎧 Make AI create brand new music! Teach it to be your personal DJ! 🤖✨
+          </p>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold rounded-full">Create</span>
+            <span class="px-3 py-1.5 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-xs font-bold rounded-full">Music AI</span>
+          </div>
+          
+          <div class="flex items-center text-pink-600 dark:text-pink-400 font-black text-lg">
+            <span>Let's Go! →</span>
+          </div>
         </div>
       </button>
     </div>

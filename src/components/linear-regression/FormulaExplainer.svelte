@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { gradient, yIntercept, formulaString, dataPoints, manualMode } from '../stores/dataStore'
-  import { trackInteraction } from '../stores/tutorialStore'
+  import { gradient, yIntercept, formulaString, dataPoints, manualMode } from '../../stores/dataStore'
+  import { trackInteraction } from '../../stores/tutorialStore'
 
   let showGradientCalc = false
   let showInterceptCalc = false

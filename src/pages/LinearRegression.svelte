@@ -1,14 +1,14 @@
 <script lang="ts">
   import { navigateTo } from '../stores/routerStore'
-  import Header from '../components/Header.svelte'
-  import DataTable from '../components/DataTable.svelte'
-  import ScatterPlot from '../components/ScatterPlot.svelte'
-  import FormulaExplainer from '../components/FormulaExplainer.svelte'
-  import PredictionCalculator from '../components/PredictionCalculator.svelte'
-  import LineAdjuster from '../components/LineAdjuster.svelte'
-  import TreasureList from '../components/TreasureList.svelte'
-  import ConceptExplainer from '../components/ConceptExplainer.svelte'
-  import { dataPoints, userTemperature } from '../stores/dataStore'
+  import Header from '../components/common/Header.svelte'
+  import DataTable from '../components/linear-regression/DataTable.svelte'
+  import ScatterPlot from '../components/linear-regression/ScatterPlot.svelte'
+  import FormulaExplainer from '../components/linear-regression/FormulaExplainer.svelte'
+  import PredictionCalculator from '../components/linear-regression/PredictionCalculator.svelte'
+  import LineAdjuster from '../components/linear-regression/LineAdjuster.svelte'
+  import TreasureList from '../components/linear-regression/TreasureList.svelte'
+  import ConceptExplainer from '../components/linear-regression/ConceptExplainer.svelte'
+  import { dataPoints, userTemperature, predictedSales } from '../stores/dataStore'
   import { onMount, onDestroy } from 'svelte'
 
   // Ice cream sales data
@@ -127,7 +127,12 @@
   $: unlockedTreasures = Math.min(currentStep + 1, 8)
 </script>
 
-<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+<div class="min-h-screen bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+  <!-- Decorative circles -->
+  <div class="absolute top-10 left-10 w-32 h-32 bg-yellow-300 rounded-full opacity-20 blur-3xl animate-blob"></div>
+  <div class="absolute top-40 right-20 w-40 h-40 bg-pink-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-2000"></div>
+  <div class="absolute bottom-20 left-1/3 w-36 h-36 bg-blue-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-4000"></div>
+  
   <Header />
   
   <!-- Navigation -->
@@ -145,14 +150,16 @@
   </nav>
 
   <div class="container mx-auto px-4 py-8 max-w-7xl">
-    <!-- Header -->
-    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-8">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-3">
-        Guess the Number!
-      </h1>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
-        Can we predict ice cream sales from temperature? Let's find the pattern.
-      </p>
+    <!-- Header Card -->
+    <div class="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-3xl shadow-2xl p-1 mb-8 transform hover:scale-[1.01] transition-transform">
+      <div class="bg-white dark:bg-gray-800 rounded-3xl p-8">
+        <h1 class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 mb-4 animate-gradient">
+          🍦 Ice Cream Sales Predictor! 🌡️
+        </h1>
+        <p class="text-xl text-gray-700 dark:text-gray-300 font-semibold">
+          Can we predict ice cream sales based on the weather? Let's use <span class="text-purple-600 font-bold">MACHINE LEARNING</span> magic! ✨
+        </p>
+      </div>
     </div>
 
     <!-- Step Progress Indicator -->

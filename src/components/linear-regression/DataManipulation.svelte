@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { dataPoints } from '../stores/dataStore'
-  import { trackInteraction } from '../stores/tutorialStore'
+  import { dataPoints } from '../../stores/dataStore'
+  import { trackInteraction } from '../../stores/tutorialStore'
   import { fade, scale } from 'svelte/transition'
 
   let newTemperature = 25

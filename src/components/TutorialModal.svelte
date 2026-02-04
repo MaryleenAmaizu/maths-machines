@@ -16,6 +16,7 @@
   let dragOffset = { x: 0, y: 0 }
   let tooltipPosition = { x: 0, y: 0 }
   let initialPosition = { x: 0, y: 0 }
+  let tooltipVisible = true
 
   function startDrag(e: MouseEvent) {
     isDragging = true
@@ -40,7 +41,11 @@
   }
 
   function close() {
-    showStepModal.set(false)
+    tooltipVisible = false
+  }
+
+  function reopenTooltip() {
+    tooltipVisible = true
   }
 
   function handleNext() {
@@ -61,6 +66,11 @@
     tooltipPosition = { x: 0, y: 0 }
   }
 
+  // Reset tooltip visibility when step changes
+  $: if ($currentStepIndex !== undefined) {
+    tooltipVisible = true
+  }
+
   // Default positions for tooltips based on component
   $: defaultPosition = ($currentStep?.component ? {
     'DataTable': { x: 50, y: 50 },
@@ -73,105 +83,104 @@
   // Use custom position if dragged, otherwise use default
   $: finalPosition = tooltipPosition.x !== 0 ? tooltipPosition : defaultPosition
 
-  // Hand pointer position (points to the actual component)
-  $: handPosition = $currentStep?.component && $currentStep.component !== 'general' ? {
-    'DataTable': { top: '15%', left: '45%', rotate: '-45deg' },
-    'ScatterPlot': { top: '50%', left: '45%', rotate: '-30deg' },
-    'LineAdjuster': { top: '15%', right: '45%', rotate: '45deg' },
-    'FormulaExplainer': { top: '40%', right: '45%', rotate: '45deg' },
-    'PredictionCalculator': { top: '60%', right: '45%', rotate: '30deg' },
-  }[$currentStep.component] : null
 </script>
 
 <svelte:window on:mousemove={drag} on:mouseup={stopDrag} />
 
 {#if $tutorialActive && $currentStep && $currentStep.component !== 'general'}
-  <!-- Draggable Contextual Tooltip -->
-  <div 
-    class="fixed z-50 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-2xl shadow-2xl max-w-sm"
-    style="left: {finalPosition.x}px; top: {finalPosition.y}px;"
-    transition:fly={{ duration: 300, y: -10 }}
-  >
-    <!-- Close Button -->
+  <!-- Reopen Button (shows when tooltip is hidden) -->
+  {#if !tooltipVisible}
     <button
-      on:click={close}
-      class="absolute -top-2 -right-2 bg-white dark:bg-gray-700 rounded-full p-1 shadow-lg hover:scale-110 transition z-10"
+      on:click={reopenTooltip}
+      class="fixed bottom-6 left-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-3 shadow-lg transition-all hover:scale-110"
+      transition:scale={{ duration: 200 }}
+      aria-label="Show tutorial"
+      title="Show tutorial step"
     >
-      <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     </button>
+  {/if}
 
-    <!-- Draggable Header -->
+  <!-- Draggable Contextual Tooltip -->
+  {#if tooltipVisible}
     <div 
-      class="p-4 pb-2 cursor-grab active:cursor-grabbing"
-      on:mousedown={startDrag}
-      role="button"
-      tabindex="0"
-      aria-label="Drag to reposition"
+      class="fixed z-50 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-xl shadow-2xl max-w-xs"
+      style="left: {finalPosition.x}px; top: {finalPosition.y}px;"
+      transition:fly={{ duration: 300, y: -10 }}
     >
-      <!-- Step Badge -->
-      <div class="inline-block bg-white/20 rounded-full px-3 py-1 text-xs font-bold mb-2">
-        Step {$currentStepIndex + 1}/{$tutorialProgress.total}
+      <!-- Close Button -->
+      <button
+        on:click={close}
+        class="absolute -top-1.5 -right-1.5 bg-white dark:bg-gray-700 rounded-full p-1 shadow-md hover:scale-110 transition z-10"
+      >
+        <svg class="w-4 h-4 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Draggable Header -->
+      <div 
+        class="p-3 pb-2 cursor-grab active:cursor-grabbing"
+        on:mousedown={startDrag}
+        role="button"
+        tabindex="0"
+        aria-label="Drag to reposition"
+      >
+        <!-- Step Badge -->
+        <div class="inline-block bg-white/20 rounded-full px-2 py-0.5 text-xs font-bold mb-1.5">
+          {$currentStepIndex + 1}/{$tutorialProgress.total}
+        </div>
+
+        <!-- Title -->
+        <h3 id="tutorial-title" class="text-base font-bold">
+          {$currentStep.title}
+        </h3>
       </div>
 
-      <!-- Title -->
-      <h3 id="tutorial-title" class="text-lg font-bold">
-        {$currentStep.title}
-      </h3>
-    </div>
+      <!-- Content (not draggable) -->
+      <div class="px-3 pb-3">
+        <p class="text-xs opacity-90 mb-3 leading-relaxed">
+          {$currentStep.description}
+        </p>
 
-    <!-- Content (not draggable) -->
-    <div class="px-4 pb-4">
-      <p class="text-sm opacity-90 mb-4 leading-relaxed">
-        {$currentStep.description}
-      </p>
+        {#if $currentStep.action}
+          <div class="bg-white/20 rounded-lg p-2 mb-3">
+            <p class="text-xs font-semibold flex items-center gap-1.5">
+              <span class="text-sm">👉</span>
+              {$currentStep.action}
+            </p>
+          </div>
+        {/if}
 
-      {#if $currentStep.action}
-        <div class="bg-white/20 rounded-lg p-3 mb-4">
-          <p class="text-xs font-semibold flex items-center gap-2">
-            <span class="text-lg">👉</span>
-            {$currentStep.action}
-          </p>
+        <!-- Navigation -->
+        <div class="flex items-center gap-2">
+          <button
+            on:click={handlePrevious}
+            disabled={$currentStepIndex === 0}
+            class="px-3 py-1.5 bg-white/20 hover:bg-white/30 disabled:opacity-30 disabled:cursor-not-allowed rounded-lg text-xs font-medium transition"
+          >
+            ← Back
+          </button>
+          
+          <div class="flex gap-1">
+            {#each $tutorialSteps as step, i}
+              {#if step.component !== 'general'}
+                <div 
+                  class="w-1 h-1 rounded-full transition-all {i === $currentStepIndex ? 'bg-white' : 'bg-white/30'}"
+                />
+              {/if}
+            {/each}
+          </div>
+          
+          <button
+            on:click={handleNext}
+            class="px-3 py-1.5 bg-white/20 hover:bg-white/30 rounded-lg text-xs font-medium transition"
+          >
+            {$currentStepIndex === 5 ? 'Done ✓' : 'Next →'}
+          </button>
         </div>
-      {/if}
-
-      <!-- Navigation -->
-      <div class="flex items-center justify-between gap-3">
-        <div class="flex gap-1">
-          {#each $tutorialSteps as step, i}
-            {#if step.component !== 'general'}
-              <div 
-                class="w-1.5 h-1.5 rounded-full transition-all {i === $currentStepIndex ? 'bg-white' : 'bg-white/30'}"
-              />
-            {/if}
-          {/each}
-        </div>
-        
-        <button
-          on:click={handleNext}
-          class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition"
-        >
-          {$currentStepIndex === 5 ? 'Done ✓' : 'Next →'}
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Pointing Hand -->
-  {#if handPosition}
-    <div 
-      class="fixed z-50 pointer-events-none text-6xl"
-      style="
-        {'top' in handPosition ? `top: ${handPosition.top};` : ''}
-        {'left' in handPosition && handPosition.left ? `left: ${handPosition.left};` : ''}
-        {'right' in handPosition && handPosition.right ? `right: ${handPosition.right};` : ''}
-        transform: translate(-50%, -50%) rotate({handPosition.rotate});
-      "
-      transition:scale={{ duration: 300, start: 0.5 }}
-    >
-      <div class="animate-bounce-subtle">
-        👉
       </div>
     </div>
   {/if}

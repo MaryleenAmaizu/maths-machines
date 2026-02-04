@@ -6,6 +6,7 @@
   import KNNDataTable from '../components/knn/KNNDataTable.svelte'
   import KNNCalculator from '../components/knn/KNNCalculator.svelte'
   import KNNTreasures from '../components/knn/KNNTreasures.svelte'
+  import KNNConceptExplainer from '../components/knn/KNNConceptExplainer.svelte'
 
   function calculateDistances() {
     const results: DistanceResult[] = []
@@ -87,29 +88,36 @@
     <!-- Header -->
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-8">
       <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-3">
-        👥 Learning from the Neighbours
+        Learning from the Neighbours
       </h1>
       <p class="text-lg text-gray-600 dark:text-gray-300">
-        Show me your neighbors, and I will show you who you are.
+        Classification by finding the k nearest similar examples
       </p>
     </div>
 
-    <!-- Story Section -->
-    <div class="bg-amber-50 dark:bg-amber-900/20 rounded-2xl shadow-xl p-6 mb-8">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">📖 The Story</h2>
-      <p class="text-gray-700 dark:text-gray-300 mb-3">
-        When I was a child in primary school, I used to sit between two boys who were always very noisy, even though I was quite quiet. 
-        Whenever there was noise in the class, the teacher would come toward us, or the other students would point in our direction. 
-        So even though I was quiet, I was often identified as one of the noisy students because of my neighbors.
-      </p>
-      <p class="text-gray-700 dark:text-gray-300">
-        <strong>The nearest neighbor algorithm works similarly:</strong> it guesses where an item belongs based on how close it is to its neighbors. 
-        The item will belong to the most dominant group of its neighbours.
-      </p>
+    <!-- Quick Guide -->
+    <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 mb-8 border-l-4 border-purple-500">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">🎯 How to Use This Simulator</h2>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+          <div class="font-bold text-purple-600 dark:text-purple-400 mb-2">1️⃣ Inspect the Data</div>
+          <p class="text-gray-700 dark:text-gray-300">Look at the 7 training students in the table. Student 8 needs classification!</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+          <div class="font-bold text-purple-600 dark:text-purple-400 mb-2">2️⃣ Set k Value</div>
+          <p class="text-gray-700 dark:text-gray-300">Choose how many neighbours to check (try k=3). Then click "Calculate Classification".</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-4">
+          <div class="font-bold text-purple-600 dark:text-purple-400 mb-2">3️⃣ See the Result</div>
+          <p class="text-gray-700 dark:text-gray-300">Watch distances get calculated, nearest neighbours highlighted, and the majority vote!</p>
+        </div>
+      </div>
+      <div class="mt-4 bg-purple-100 dark:bg-purple-900/30 rounded-lg p-3">
+        <p class="text-sm text-purple-900 dark:text-purple-200">
+          <strong>Expected outcome:</strong> With k=3, Student 8 (4, 8) should be classified as <strong>Average</strong> - 2 out of 3 neighbours will vote Average!
+        </p>
+      </div>
     </div>
-
-    <!-- Treasures Section -->
-    <KNNTreasures />
 
     <!-- Main Content -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
@@ -124,5 +132,8 @@
         <KNNCalculator {calculateDistances} {resetPrediction} />
       </div>
     </div>
+
+    <!-- Concept Explainer -->
+    <KNNConceptExplainer />
   </div>
 </div>

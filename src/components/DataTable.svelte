@@ -94,7 +94,7 @@
 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-2xl font-bold text-gray-800 dark:text-white">
-      📊 Ice Cream Sales Data
+      Ice Cream Sales Data
     </h2>
     <div class="flex gap-2">
       <button
@@ -199,13 +199,13 @@
   <div class="mt-4 space-y-2">
     <div class="p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
       <p class="text-sm text-gray-700 dark:text-gray-300">
-        💡 <strong>Try it:</strong> Click any temperature or sales value to edit it. Watch how the formula and graph update instantly!
+        💡 <strong>Try it:</strong> Click any temperature or sales value to edit it and explore the data!
       </p>
     </div>
     
     <div class="p-4 bg-amber-50 dark:bg-amber-900/30 rounded-lg">
       <p class="text-sm text-gray-700 dark:text-gray-300">
-        🎯 <strong>Experiment:</strong> Add more data points or change values to see how they affect the line of best fit!
+        🎯 <strong>Notice:</strong> As temperature increases, sales also increase. This suggests a relationship between the two variables.
       </p>
     </div>
   </div>

@@ -70,7 +70,7 @@
         on:click={enableManualMode}
         class="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold rounded-xl transition transform hover:scale-105"
       >
-        🎮 Try Manual Training
+        Try Manual Training
       </button>
     </div>
   {:else}

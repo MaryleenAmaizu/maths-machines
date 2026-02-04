@@ -35,7 +35,7 @@
   {#if $manualMode}
     <div class="mb-4 p-4 bg-purple-50 dark:bg-purple-900/30 rounded-lg border-2 border-purple-200 dark:border-purple-700">
       <p class="text-sm text-gray-700 dark:text-gray-300">
-        🎮 <strong>Manual Mode Active:</strong> You're adjusting the line yourself. These calculations show the mathematically optimal line.
+        <strong>Manual Mode Active:</strong> You're adjusting the line yourself. These calculations show the mathematically optimal line.
       </p>
     </div>
   {/if}

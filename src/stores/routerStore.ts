@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-export type Page = 'home' | 'linear-regression' | 'knn'
+export type Page = 'home' | 'linear-regression' | 'knn' | 'generative'
 
 export const currentPage = writable<Page>('home')
 

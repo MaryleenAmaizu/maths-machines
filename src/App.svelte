@@ -3,6 +3,7 @@
   import Home from './pages/Home.svelte'
   import LinearRegression from './pages/LinearRegression.svelte'
   import KNN from './pages/KNN.svelte'
+  import Generative from './pages/Generative.svelte'
 </script>
 
 {#if $currentPage === 'home'}
@@ -11,6 +12,8 @@
   <LinearRegression />
 {:else if $currentPage === 'knn'}
   <KNN />
+{:else if $currentPage === 'generative'}
+  <Generative />
 {/if}
 
 <style>

@@ -35,7 +35,7 @@
           <div class="flex items-center justify-between mb-4">
             <div class="text-6xl transform group-hover:scale-110 transition-transform">🍦</div>
             <div class="px-4 py-2 bg-gradient-to-r from-pink-100 to-purple-100 dark:from-pink-900/50 dark:to-purple-900/50 text-pink-700 dark:text-pink-300 rounded-full text-sm font-bold">
-              Chapter 1
+              Part 1
             </div>
           </div>
           
@@ -67,7 +67,7 @@
           <div class="flex items-center justify-between mb-4">
             <div class="text-6xl transform group-hover:scale-110 transition-transform">📚</div>
             <div class="px-4 py-2 bg-gradient-to-r from-green-100 to-teal-100 dark:from-green-900/50 dark:to-teal-900/50 text-green-700 dark:text-green-300 rounded-full text-sm font-bold">
-              Chapter 2
+              Part 2
             </div>
           </div>
           
@@ -81,7 +81,7 @@
           
           <div class="flex flex-wrap gap-2 mb-4">
             <span class="px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs font-bold rounded-full">Classification</span>
-            <span class="px-3 py-1.5 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold rounded-full">KNN Magic</span>
+            <span class="px-3 py-1.5 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-bold rounded-full">Classification</span>
           </div>
           
           <div class="flex items-center text-teal-600 dark:text-teal-400 font-black text-lg">
@@ -99,7 +99,7 @@
           <div class="flex items-center justify-between mb-4">
             <div class="text-6xl transform group-hover:scale-110 transition-transform">🎵</div>
             <div class="px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/50 dark:to-pink-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm font-bold">
-              Chapter 3
+              Part 3
             </div>
           </div>
           

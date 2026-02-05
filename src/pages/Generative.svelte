@@ -1,11 +1,11 @@
 <script lang="ts">
   import { navigateTo } from '../stores/routerStore'
-  import Header from '../components/common/Header.svelte'
   import TrainingDataTable from '../components/generative/TrainingDataTable.svelte'
   import GenreSelector from '../components/generative/GenreSelector.svelte'
   import GeneratedTrack from '../components/generative/GeneratedTrack.svelte'
   import FeatureDistribution from '../components/generative/FeatureDistribution.svelte'
   import GenerativeConceptExplainer from '../components/generative/GenerativeConceptExplainer.svelte'
+  import GenerativeTreasures from '../components/generative/GenerativeTreasures.svelte'
   import type { Track, GenreStats, Distribution } from '../components/generative/types'
 
   // Sample tracks dataset
@@ -100,19 +100,17 @@
   <div class="absolute bottom-20 right-10 w-36 h-36 bg-pink-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-2000"></div>
   <div class="absolute top-1/3 left-1/2 w-32 h-32 bg-orange-300 rounded-full opacity-20 blur-3xl animate-blob animation-delay-4000"></div>
   
-  <Header />
-  
   <!-- Navigation -->
   <nav class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-    <div class="container mx-auto px-4 py-3 flex items-center gap-3 text-sm">
+    <div class="container mx-auto px-4 py-2 flex items-center justify-between">
       <button 
         on:click={() => navigateTo('home')}
-        class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1"
+        class="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium transition text-sm"
       >
         ← Home
       </button>
-      <span class="text-gray-400">|</span>
-      <span class="text-gray-700 dark:text-gray-300 font-medium">Chapter 3: Generative Models</span>
+      <span class="text-gray-700 dark:text-gray-300 font-medium text-sm">Part 3: Generative Models</span>
+      <div class="w-20"></div><!-- Spacer for layout balance -->
     </div>
   </nav>
 
@@ -186,5 +184,26 @@
 
     <!-- Detailed Explainer -->
     <GenerativeConceptExplainer />
+
+    <!-- Maths Treasures - At the very end -->
+    <div class="mt-12 mb-24">
+      <GenerativeTreasures />
+    </div>
+
+    <!-- Part Navigation -->
+    <div class="flex justify-between items-center py-8 border-t-2 border-gray-200 dark:border-gray-700 mb-12">
+      <button
+        on:click={() => navigateTo('knn')}
+        class="flex items-center gap-2 px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition"
+      >
+        ← Part 2: K-Nearest Neighbours
+      </button>
+      <button
+        on:click={() => navigateTo('home')}
+        class="flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition shadow-lg"
+      >
+        Back to Home →
+      </button>
+    </div>
   </div>
 </div>

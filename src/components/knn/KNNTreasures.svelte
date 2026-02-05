@@ -8,11 +8,11 @@
 
 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 mb-8">
   <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-    🏆 Math Foundations (3 Treasures)
+    🏆 Maths Foundations Review
   </h2>
   
   <p class="text-gray-600 dark:text-gray-300 mb-6">
-    We need to collect 3 treasures to proceed further. Each treasure teaches us a new math skill that helps our machine learn faster.
+    Let's review the <strong>3 maths treasures</strong> we collected throughout this journey. Each treasure represents a mathematical skill that powered our machine learning algorithm.
   </p>
 
   <div class="space-y-4">
@@ -35,7 +35,7 @@
           </p>
           <div class="bg-indigo-50 dark:bg-indigo-900/30 p-3 rounded">
             <p class="text-sm text-gray-700 dark:text-gray-300">
-              <strong>🧠 Connection to KNN:</strong> When we follow a sequence to decide what comes next, 
+              <strong>🧠</strong> When we follow a sequence to decide what comes next, 
               we're doing what a machine does. A machine looks at old examples to guess the new one.
             </p>
           </div>
@@ -70,7 +70,7 @@
           </p>
           <div class="bg-green-50 dark:bg-green-900/30 p-3 rounded">
             <p class="text-sm text-gray-700 dark:text-gray-300">
-              <strong>🧠 Connection to KNN:</strong> Machines compare too. KNN works by comparing distances between points.
+              <strong>🧠</strong> Machines compare too. KNN works by comparing distances between points.
               Your number sense is the same skill the machine uses!
             </p>
           </div>

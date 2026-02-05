@@ -77,15 +77,20 @@
   
   <!-- Navigation Bar -->
   <nav class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-    <div class="container mx-auto px-4 py-3 flex items-center gap-4">
+    <div class="container mx-auto px-4 py-2 flex items-center justify-between">
       <button
         on:click={() => navigateTo('home')}
-        class="px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 font-medium transition"
+        class="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 font-medium transition text-sm"
       >
         ← Home
       </button>
-      <span class="text-gray-400">|</span>
-      <span class="text-gray-700 dark:text-gray-300 font-medium">Chapter 3: K-Nearest Neighbours</span>
+      <span class="text-gray-700 dark:text-gray-300 font-medium text-sm">Part 2: K-Nearest Neighbours</span>
+      <button
+        on:click={() => navigateTo('generative')}
+        class="px-3 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 font-medium transition shadow-md text-sm"
+      >
+        Part 3 →
+      </button>
     </div>
   </nav>
 
@@ -142,5 +147,26 @@
 
     <!-- Concept Explainer -->
     <KNNConceptExplainer />
+
+    <!-- Maths Treasures - At the very end -->
+    <div class="mt-12 mb-24">
+      <KNNTreasures />
+    </div>
+
+    <!-- Part Navigation -->
+    <div class="flex justify-between items-center py-8 border-t-2 border-gray-200 dark:border-gray-700 mb-12">
+      <button
+        on:click={() => navigateTo('linearRegression')}
+        class="flex items-center gap-2 px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition"
+      >
+        ← Part 1: Linear Regression
+      </button>
+      <button
+        on:click={() => navigateTo('generative')}
+        class="flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition shadow-lg"
+      >
+        Part 3: Generative Models →
+      </button>
+    </div>
   </div>
 </div>

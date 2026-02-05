@@ -203,7 +203,7 @@
 
   <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
     <p class="text-sm text-gray-700 dark:text-gray-300">
-      💡 <strong>Try it:</strong> Click any score to edit it. The new student (Student 8) has unknown grade - can you predict it?
+      💡 <strong>New Student:</strong> Student 8 (Study Hours: 4, Sleep Hours: 8) has an unknown grade. Can you predict it using the k-nearest neighbours?
     </p>
   </div>
 </div>

@@ -4,7 +4,7 @@
 <div class="bg-gradient-to-br from-gray-50 to-indigo-50/30 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-xl p-8 mt-12">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-      🧠 How Machines Learn to Create Music
+      How Machines Learn to Create Music
     </h2>
 
     <div class="prose dark:prose-invert max-w-none space-y-8">
@@ -99,7 +99,7 @@
           <h3 class="text-xl font-bold text-gray-900 dark:text-white">Generate with Randomness</h3>
         </div>
         <p class="text-gray-700 dark:text-gray-300 mb-4">
-          Now the magic happens! For each feature, we pick a <strong>random value within the learned range</strong>:
+          Now the generation process begins! For each feature, we pick a <strong>random value within the learned range</strong>:
         </p>
         <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 mb-4">
           <p class="text-sm font-semibold mb-2">Generating "AI Pulse" (Electronic Track):</p>
